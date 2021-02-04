@@ -1,0 +1,25 @@
+node_modules/
+build/
+node_modules/**/*
+build/**/*
+certs/**/*
+
+.DS_Store
+.env*
+.env
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VS Code
+.vscode/*
+
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+package-lock.json
