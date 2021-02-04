@@ -4,7 +4,9 @@
   "description": "NodeJS Typescript Boilerplate",
   "main": "src/server.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf build/ && prettier --write source/ && tsc",
+    "dev":"nodemon"
   },
   "repository": {
     "type": "git",
