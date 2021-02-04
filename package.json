@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-ts-boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS Typescript Boilerplate",
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://orla11@bitbucket.org/orla11/nodejs-ts-boilerplate.git"
+  },
+  "author": "orla.dev",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/orla11/nodejs-ts-boilerplate#readme"
+}
