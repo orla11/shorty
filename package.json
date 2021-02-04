@@ -16,11 +16,13 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/orla11/nodejs-ts-boilerplate#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.9",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11"
   }
