@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "dev":"nodemon"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -14,5 +14,10 @@
   },
   "author": "orla.dev",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/orla11/nodejs-ts-boilerplate#readme"
+  "homepage": "https://bitbucket.org/orla11/nodejs-ts-boilerplate#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
 }
