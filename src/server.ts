@@ -11,7 +11,7 @@ async function startServer() {
 
     server
         .listen(config.server.port, () => {
-            logger.info(`[${NAMESPACE}] - Listening on port ${config.server.port}`);
+            logger.info(`[${NAMESPACE}] - Listening on ${config.server.hostname}:${config.server.port}`);
         })
         .on('error', (err) => {
             logger.error(`[${NAMESPACE} - ${err}]`);
