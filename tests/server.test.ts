@@ -9,11 +9,13 @@ beforeAll(async (done) => {
     done();
 });
 
-describe('Server health check', () => {
-    it('should return code 200 and pong message when hitting /ping', async () => {
-        const res = await request(app).get('/get').send();
-
+describe('Server Health Check', () => {
+    it('should return code 200 when GET /status', async () => {
+        const res = await request(app).get('/status').send();
         expect(res.status).toEqual(200);
-        expect(res.body.message).toEqual('pong');
+    });
+    it('should return code 200 when HEAD /status', async () => {
+        const res = await request(app).head('/status').send();
+        expect(res.status).toEqual(200);
     });
 });
