@@ -10,12 +10,16 @@ beforeAll(async (done) => {
 });
 
 describe('Server Health Check', () => {
-    it('should return code 200 when GET /status', async () => {
+    it('should return 200 when GET /status', async () => {
         const res = await request(app).get('/status').send();
-        expect(res.status).toEqual(200);
+        expect(res.status).toBe(200);
     });
-    it('should return code 200 when HEAD /status', async () => {
+    it('should return 200 when HEAD /status', async () => {
         const res = await request(app).head('/status').send();
-        expect(res.status).toEqual(200);
+        expect(res.status).toBe(200);
+    });
+    it('should return 404 when GET /nonexistingroute', async () => {
+        const res = await request(app).head('/nonexistingroute').send();
+        expect(res.status).toBe(404);
     });
 });
