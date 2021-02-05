@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import config from '../config';
+// import config from '../config';
 import logger from './logger';
 
-export default ({ app }: { app: express.Application }) => {
+export default async ({ app }: { app: express.Application }) => {
     const NAMESPACE = 'Server';
 
     app.enable('trust proxy');
