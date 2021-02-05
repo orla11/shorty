@@ -6,6 +6,16 @@ import logger from './logger';
 export default async ({ app }: { app: express.Application }) => {
     const NAMESPACE = 'Server';
 
+    /*
+     * Health Check endpoints
+     */
+    app.get('/status', (req, res) => {
+        res.status(200).end();
+    });
+    app.get('/status', (req, res) => {
+        res.status(200).end();
+    });
+
     app.enable('trust proxy');
 
     app.use((req, res, next) => {
