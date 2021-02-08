@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-ts-boilerplate",
+  "name": "shorty",
   "version": "1.0.0",
-  "description": "NodeJS Typescript Boilerplate",
+  "description": "URL-shortner made with nodejs and typescript",
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://orla11@bitbucket.org/orla11/nodejs-ts-boilerplate.git"
+    "url": "git+https://github.com/orla11/shorty.git"
   },
   "author": "orla.dev",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/orla11/nodejs-ts-boilerplate#readme",
+  "license": "MIT",
+  "homepage": "https://github.com/orla11/shorty",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
