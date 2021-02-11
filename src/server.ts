@@ -1,3 +1,5 @@
+import 'reflect-metadata'; // mandatory when using @Decorators
+
 import express from 'express';
 import config from './config';
 import logger from './loaders/logger';
