@@ -15,6 +15,7 @@ export default async ({ expressApp }: { expressApp: express.Application }) => {
     dependencyInjectorLoader({
         models: [urlModel]
     });
+    logger.info(`[${NAMESPACE}] - Dependency Injector loaded`);
 
     await expressLoader({ app: expressApp });
     logger.info(`[${NAMESPACE}] - Express loaded`);
