@@ -11,14 +11,19 @@ const server = {
     port: process.env.SERVER_PORT || 1337
 };
 
-const database = {};
+const database = {
+    URL: process.env.MONGODB_URI || 'localhost'
+};
 
 const logs = {
     level: process.env.LOG_LEVEL || 'silly'
 };
 
 const api = {
-    prefix: '/api'
+    prefix: '/api/v1',
+    // useful option which might
+    // be used for billing purposes
+    allowedClick: 10
 };
 
 const config = {
