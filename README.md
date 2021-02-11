@@ -1,3 +1,3 @@
-# NodeJS Typescript Boilerplate
+# NodeJS Url Shortner with Typescript
 
-This is a personal nodejs project boilerplate.
+This is a url-shortner project made by [orla.dev](https://orla.dev)
