@@ -1,25 +1,38 @@
+// import 'reflect-metadata';
+
 import { Request, Response, NextFunction } from 'express';
 import { Container } from 'typedi';
-// import shortyService from '../services/shortyService';
 import { Logger } from 'winston';
 import config from '../config';
 import validUrl from 'valid-url';
+import shortyService from '../services/shortyService';
 
 const NAMESPACE = 'shorty Controller';
 
 const shortUrl = async (req: Request, res: Response, next: NextFunction) => {
     const logger: Logger = Container.get('logger');
+    const shortyServiceInstance = Container.get(shortyService);
 
-    logger.debug(`[${NAMESPACE}] - Shorty route controller: calling /shorty with body: ${req.body}`);
+    logger.debug(`[${NAMESPACE}] - Shorty route controller: calling /shorty with body: %o`, req.body);
 
     const originalUrl = req.body.originalUrl;
     const baseUrl = config.server.hostname + ':' + config.server.port + '/' + config.api.prefix;
 
-    if (!validUrl.isUri(baseUrl)) return res.status(500).json('Internal Server Error.');
+    if (!isValidUrl(originalUrl)) return res.status(500).json('Internal Server Error.');
 
-    if (validUrl.isUri(originalUrl))
-        // call service
-        return res.status(201).json({});
+    if (isValidUrl(originalUrl)) {
+        const url = await shortyServiceInstance.urlExists(originalUrl);
+        if (url) return res.status(200).json(url);
+
+        const shortenedUrl = await shortyServiceInstance.shortUrl(baseUrl, originalUrl);
+        return res.status(201).json(shortenedUrl);
+    }
+
+    return res.status(400).json('Invalid URL. Enter a valid url.');
+};
+
+const isValidUrl = (originalUrl: string) => {
+    return validUrl.isUri(originalUrl);
 };
 
 export default { shortUrl };
