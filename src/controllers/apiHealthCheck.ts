@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { Request, Response, NextFunction } from 'express';
 import { Container } from 'typedi';
 import apiHealthCheckService from '../services/apiHealthCheck';

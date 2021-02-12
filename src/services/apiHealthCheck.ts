@@ -1,10 +1,10 @@
 import { Service } from 'typedi';
 
-@Service('apiHealthCheckService')
+@Service()
 export default class apiHealthCheckService {
     constructor() {}
 
-    public async logInConsole() {
+    public logInConsole() {
         console.log('apiHealthCheckService');
     }
 }
