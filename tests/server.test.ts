@@ -1,4 +1,4 @@
-import { default as request } from 'supertest';
+import supertest from 'supertest';
 import express from 'express';
 import loaders from '../src/loaders';
 
@@ -11,15 +11,15 @@ beforeAll(async (done) => {
 
 describe('Server Health Check', () => {
     it('should return 200 when GET /status', async () => {
-        const res = await request(app).get('/status').send();
+        const res = await supertest(app).get('/status').send();
         expect(res.status).toBe(200);
     });
     it('should return 200 when HEAD /status', async () => {
-        const res = await request(app).head('/status').send();
+        const res = await supertest(app).head('/status').send();
         expect(res.status).toBe(200);
     });
     it('should return 404 when GET /nonexistingroute', async () => {
-        const res = await request(app).head('/nonexistingroute').send();
+        const res = await supertest(app).head('/nonexistingroute').send();
         expect(res.status).toBe(404);
     });
 });
