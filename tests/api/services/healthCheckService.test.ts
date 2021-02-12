@@ -1,6 +1,6 @@
 import apiHealthCheckService from '../../../src/services/apiHealthCheck';
 
-describe('Api Health Check staus test', () => {
+describe('Api Health Check Service test', () => {
     it('should console log apiHealthCheckService', async () => {
         console.log = jest.fn();
         const apiHealthCheckServiceInstance = new apiHealthCheckService();
