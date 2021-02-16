@@ -28,11 +28,6 @@ describe('shorty endpoints test', () => {
                 expect(validUrl.isUri(res.body.shortUrl)).toBeTruthy();
                 expect(res.body.urlCode).toBeTruthy();
                 expect(res.body.clicksCount).toBe(0);
-
-                const url = Url.findOne({ _id: res.body._id });
-                expect(url).toBeTruthy();
-                delete res.body._id;
-                expect(res.body).toBe(data);
             });
     });
 });
