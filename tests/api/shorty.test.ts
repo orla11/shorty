@@ -3,12 +3,11 @@ import express from 'express';
 import loaders from '../../src/loaders';
 import config from '../../src/config';
 import validUrl from 'valid-url';
-import Url from '../../src/models/url';
 
 const app = express();
 
 beforeAll(async (done) => {
-    await loaders({ expressApp: app });
+    await loaders({ expressApp: app, testDb: true });
     done();
 });
 
