@@ -4,10 +4,10 @@ import dependencyInjectorLoader from './dependencyInjector';
 import mongooseLoader from './database';
 import expressLoader from './express';
 
-export default async ({ expressApp, testDb = false }: { expressApp: express.Application; testDb: boolean }) => {
+export default async ({ expressApp }: { expressApp: express.Application }) => {
     const NAMESPACE = 'Loader';
 
-    await mongooseLoader(testDb);
+    await mongooseLoader();
     logger.info(`[${NAMESPACE}] - DB loaded and connected`);
 
     const urlModel = {

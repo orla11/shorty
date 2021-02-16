@@ -7,7 +7,7 @@ import validUrl from 'valid-url';
 const app = express();
 
 beforeAll(async (done) => {
-    await loaders({ expressApp: app, testDb: true });
+    await loaders({ expressApp: app });
     done();
 });
 

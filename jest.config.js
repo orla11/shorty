@@ -78,8 +78,7 @@ module.exports = {
     // notifyMode: "always",
 
     // A preset that is used as a base for Jest's configuration
-    //preset: 'ts-jest',
-    preset: '@shelf/jest-mongodb',
+    preset: 'ts-jest',
 
     // Run tests from one or more projects
     // projects: null,
