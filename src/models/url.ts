@@ -3,7 +3,7 @@ import { IUrl } from '../interfaces/IUrl';
 
 const Url = new mongoose.Schema(
     {
-        code: String,
+        urlCode: String,
         originalUrl: {
             type: String,
             required: [true, 'Please provide a valid url']
