@@ -3,9 +3,11 @@ import { Db } from 'mongodb';
 import config from '../config';
 import logger from './logger';
 
-export default async (): Promise<Db> => {
+export default async (memory_server: boolean = false): Promise<Db> => {
     try {
-        const connection = await mongoose.connect(config.database.URL, {
+        const dbUrl = memory_server ? global.__MONGO_URI__ : config.database.URL;
+
+        const connection = await mongoose.connect(dbUrl, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true
