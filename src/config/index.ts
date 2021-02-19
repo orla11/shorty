@@ -12,7 +12,8 @@ const server = {
 };
 
 const database = {
-    URL: process.env.MONGODB_URI || 'localhost'
+    URL: process.env.MONGODB_URI || 'mongodb://localhost:27017/example',
+    testURL: process.env.TEST_MONGODB_URI || 'mongodb://localhost:27017/jest'
 };
 
 const logs = {

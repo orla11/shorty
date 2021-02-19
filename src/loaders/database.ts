@@ -3,9 +3,11 @@ import { Db } from 'mongodb';
 import config from '../config';
 import logger from './logger';
 
-export default async (): Promise<Db> => {
+export default async (testDB: boolean = false): Promise<Db> => {
     try {
-        const connection = await mongoose.connect(config.database.URL, {
+        let dbUrl: string = testDB ? config.database.testURL : config.database.URL;
+
+        const connection = await mongoose.connect(dbUrl, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true

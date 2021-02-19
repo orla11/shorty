@@ -5,7 +5,7 @@ import loaders from '../../../src/loaders';
 const app = express();
 
 beforeAll(async (done) => {
-    await loaders({ expressApp: app });
+    await loaders({ expressApp: app, testDb: false });
     done();
 });
 

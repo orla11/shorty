@@ -1,11 +1,12 @@
 import supertest from 'supertest';
 import express from 'express';
 import loaders from '../src/loaders';
+import mongoose from 'mongoose';
 
 const app = express();
 
 beforeAll(async (done) => {
-    await loaders({ expressApp: app });
+    await loaders({ expressApp: app, testDb: false });
     done();
 });
 
