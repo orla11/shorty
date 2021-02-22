@@ -31,8 +31,34 @@ const shortUrl = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(400).json('Invalid URL. Enter a valid url.');
 };
 
+const getShortUrl = async (req: Request, res: Response, next: NextFunction) => {
+    const logger: Logger = Container.get('logger');
+    const shortyServiceInstance = Container.get(shortyService);
+
+    logger.debug(`[${NAMESPACE}] - Shorty route controller: calling get /shorty with params: %o`, req.params);
+
+    const urlCode = req.params.shortUrl;
+
+    let url = await shortyServiceInstance.loadShortUrl(urlCode);
+
+    if (!url) return res.status(400).json('Short url not found');
+
+    if (isClicksLimitReached(url.clicksCount)) {
+        logger.info(`[${NAMESPACE}] - The short url ${url.shortUrl} clicks limit has been reached.`);
+        return res.status(400).json(`The short url ${url.shortUrl} clicks limit has been reached.`);
+    }
+
+    url.clicksCount++;
+    await shortyServiceInstance.updateUrlClicksCount(urlCode, url.clicksCount);
+    return res.redirect(url.originalUrl);
+};
+
 const isValidUrl = (originalUrl: string) => {
     return validUrl.isUri(originalUrl);
 };
 
-export default { shortUrl };
+const isClicksLimitReached = (clicksCount: number): boolean => {
+    return clicksCount >= config.api.allowedClicks;
+};
+
+export default { shortUrl, getShortUrl };
