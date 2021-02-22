@@ -8,4 +8,6 @@ export default (app: Router) => {
     app.use('/shorty', route);
 
     route.post('/', shortyValidator.validateOriginalUrl, shortyController.shortUrl);
+
+    route.get('/:shortUrl', shortyController.getShortUrl);
 };
