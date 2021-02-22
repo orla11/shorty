@@ -29,9 +29,27 @@ export default class shortyService {
         }
     }
 
+    public async loadShortUrl(shortUrlCode: string): Promise<IUrl | null> {
+        try {
+            return this.urlModel.findOne({ urlCode: shortUrlCode });
+        } catch (error) {
+            this.logger.error(error);
+            throw error;
+        }
+    }
+
     public async urlExists(originalUrl: string): Promise<IUrl | null> {
         try {
             return this.urlModel.findOne({ originalUrl: originalUrl });
+        } catch (error) {
+            this.logger.error(error);
+            throw error;
+        }
+    }
+
+    public async updateUrlClicksCount(shortUrlCode: string, clicksCount: number): Promise<IUrl | null> {
+        try {
+            return this.urlModel.updateOne({ urlCode: shortUrlCode }, { $set: { clicksCount: clicksCount } });
         } catch (error) {
             this.logger.error(error);
             throw error;
