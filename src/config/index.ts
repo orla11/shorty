@@ -24,7 +24,7 @@ const api = {
     prefix: '/api/v1',
     // useful option which might
     // be used for billing purposes
-    allowedClick: 10
+    allowedClicks: 10
 };
 
 const config = {
