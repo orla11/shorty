@@ -4,6 +4,7 @@ import loaders from '../../src/loaders';
 import config from '../../src/config';
 import validUrl from 'valid-url';
 import mongoose from 'mongoose';
+import nanoid from '../../src/loaders/nanoid';
 
 const app = express();
 
@@ -56,5 +57,28 @@ describe('shorty endpoints test', () => {
                 expect(res.body.urlCode).toBeTruthy();
                 expect(res.body.clicksCount).toBe(0);
             });
+    });
+
+    it('should return 400 with an error message when GET /api/v1/:shortUrl if url does not exist', async () => {
+        await supertest(app)
+            .get(config.api.prefix + '/shorty/' + nanoid())
+            .send()
+            .expect(400);
+    });
+
+    it('should redirect to the originalUrl when GET /api/v1/:shortUrl if url exists', async () => {
+        const data = {
+            originalUrl: 'https://www.youtube.com/watch?v=liJbB_0eCTo'
+        };
+
+        let result = await supertest(app)
+            .post(config.api.prefix + '/shorty')
+            .send(data);
+
+        await supertest(app)
+            .get(config.api.prefix + '/shorty/' + result.body.urlCode)
+            .send()
+            .expect(302)
+            .expect('Location', data.originalUrl);
     });
 });
