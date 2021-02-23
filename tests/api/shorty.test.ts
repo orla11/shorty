@@ -29,7 +29,6 @@ describe('shorty endpoints test', () => {
             .send(data)
             .expect(201)
             .then(async (res) => {
-                expect(res.body._id).toBeDefined();
                 expect(res.body.originalUrl).toBe(data.originalUrl);
                 expect(validUrl.isUri(res.body.shortUrl)).toBeTruthy();
                 expect(res.body.urlCode).toBeTruthy();
@@ -51,7 +50,6 @@ describe('shorty endpoints test', () => {
             .send(data)
             .expect(200)
             .then(async (res) => {
-                expect(res.body._id).toBeDefined();
                 expect(res.body.originalUrl).toBe(data.originalUrl);
                 expect(validUrl.isUri(res.body.shortUrl)).toBeTruthy();
                 expect(res.body.urlCode).toBeTruthy();
@@ -80,5 +78,25 @@ describe('shorty endpoints test', () => {
             .send()
             .expect(302)
             .expect('Location', data.originalUrl);
+    });
+
+    it('should increment clicksCount GET originalUrl', async () => {
+        const data = {
+            originalUrl: 'https://www.youtube.com/watch?v=liJbB_0eCTo'
+        };
+
+        let result = await supertest(app)
+            .post(config.api.prefix + '/shorty')
+            .send(data);
+
+        await supertest(app)
+            .get(config.api.prefix + '/shorty/' + result.body.urlCode)
+            .send();
+
+        let secondResult = await supertest(app)
+            .post(config.api.prefix + '/shorty')
+            .send(data);
+
+        expect(secondResult.body.clicksCount).toBe(1);
     });
 });
