@@ -16,7 +16,7 @@ const shortUrl = async (req: Request, res: Response, next: NextFunction) => {
     logger.debug(`[${NAMESPACE}] - Shorty route controller: calling /shorty with body: %o`, req.body);
 
     const originalUrl = req.body.originalUrl;
-    const baseUrl = config.server.hostname + ':' + config.server.port + '/' + config.api.prefix;
+    const baseUrl = config.server.hostname + ':' + config.server.port + config.api.prefix + '/shorty';
 
     if (!isValidUrl(originalUrl)) return res.status(500).json('Internal Server Error.');
 
