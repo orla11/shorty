@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "rm -rf build/ && prettier --write source/ && tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "start": "node build/index.js"
   },
   "repository": {
     "type": "git",
