@@ -5,7 +5,6 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf build/ && tsc",
     "dev": "nodemon",
     "start": "node build/index.js",
     "deploy": "git add . && git commit -m Heroku && git push heroku"
