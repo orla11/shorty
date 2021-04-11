@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "test": "jest",
-    "build": "rm -rf build/ && prettier --write source/ && tsc",
+    "build": "rm -rf build/ && tsc",
     "dev": "nodemon",
     "start": "node build/index.js",
     "postinstall": "npm run build",
